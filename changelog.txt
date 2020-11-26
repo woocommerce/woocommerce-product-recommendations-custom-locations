@@ -1,0 +1,4 @@
+ *** WooCommerce Product Recommendations - Custom Locations ***
+
+2020.11.XX - version 1.0.0
+* Initial release.

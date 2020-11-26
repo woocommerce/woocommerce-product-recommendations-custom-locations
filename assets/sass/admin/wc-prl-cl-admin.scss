@@ -1,0 +1,107 @@
+/*
+ * List table styles.
+ */
+.prl-custom-locations-empty-state:after {
+	font-family: WC_PRL;
+	display: inline-block;
+	position: absolute;
+	font-size: 30em;
+	line-height: 1;
+	font-style: normal;
+	font-weight: normal;
+	color: #eee2ec;
+	top: 50%;
+	transform: translateY( -50% );
+	right: 20px;
+	z-index: 0;
+}
+
+.prl-custom-locations-empty-state:after {
+	content: '\e901';
+	top: 60%;
+}
+
+.wc-action-button-shortcode {
+	&:after {
+		font-family: dashicons;
+		content: "\f150";
+	}
+}
+
+/*
+ * Metaboxes.
+ */
+// Remove new 5.5 metabox order buttons.
+.post-type-prl_hook .postbox-header .handle-actions {
+	display: none !important;
+}
+
+#wc-prl-cl-shortcode {
+
+	p {
+		color: #79797e;
+		font-size: 12px;
+	}
+
+	code {
+		display: block;
+		padding: 10px;
+		word-break: break-all;
+		background: #eee;
+		color: #111;
+	}
+
+	.meta {
+		text-align: right;
+		display: block;
+		padding-top: 10px;
+
+		a.copy {
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+
+			&:before {
+				font-family: Dashicons;
+				display: inline-block;
+				content: "\f481";
+				position: relative;
+				top: 2px;
+				margin-right: 5px;
+			}
+		}
+	}
+}
+
+// List table.
+.post-type-prl_hook {
+
+	.widefat {
+		.column-views,
+		.column-clicks,
+		.column-conversion,
+		.column-revenue,
+		.column-deployments {
+			text-align: center;
+		}
+
+		.column-wc_actions {
+			text-align: right;
+
+			.button {
+				text-indent: 9999px;
+				margin: 2px 0 2px 4px;
+				min-height: auto;
+			}
+		}
+	}
+}
+
+.sw-wp-version-gte-53 {
+
+	&.post-type-prl_hook .column-wc_actions a.button::after {
+		margin-top: 1px;
+	}
+}
