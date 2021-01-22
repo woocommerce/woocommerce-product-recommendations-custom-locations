@@ -93,7 +93,7 @@ class WC_PRL_CL_Meta_Box_Location_Configuration extends WC_PRL_Meta_Box {
 								$options[ 'id' ]              = $deployment->get_id();
 								$options[ 'engine_id' ]       = $deployment->get_engine_id();
 								$options[ 'engine_type' ]     = $deployment->get_engine_type();
-								$options[ 'filter_type' ]     = array( 'cart' );
+								$options[ 'filter_type' ]     = array( 'cart', 'product', 'archive', 'order' );
 								$options[ 'active' ]          = $deployment->is_active() ? 'on' : 'off';
 								$options[ 'display_order' ]   = $deployment->get_display_order();
 								$options[ 'title' ]           = $deployment->get_title();
@@ -141,7 +141,7 @@ class WC_PRL_CL_Meta_Box_Location_Configuration extends WC_PRL_Meta_Box {
 			return false;
 		}
 
-		$location = WC_PRL()->locations->get_location( 'shortcode' );
+		$location = WC_PRL()->locations->get_location( 'custom' );
 		if ( ! $location ) {
 			return false;
 		}

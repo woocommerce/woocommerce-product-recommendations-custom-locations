@@ -55,10 +55,32 @@ class WC_PRL_CL_Admin {
 		/*---------------------------------------------------*/
 
 		add_action( 'admin_footer', array( __CLASS__, 'print_conditions_field_scripts' ) );
+
+		// Filter Deployments list table location column.
+		add_filter( 'manage_prl_deployments_location_column', array( __CLASS__, 'add_cpt_location_column' ), 10, 3 );
 	}
 
 	/**
-	 * Inclusions.
+	 * Print footer templates in custom location CPT.
+	 */
+	public static function add_cpt_location_column( $output, $location, $item ) {
+		$hook = absint( $item[ 'hook' ] );
+		if ( 'custom' === $location->get_location_id() && wc_prl_is_cpt_hook( $hook ) ) {
+			$post_id = absint( $hook );
+			$post    = get_post( $post_id );
+			if ( ! $post || ! is_a( $post, 'WP_Post' ) ) {
+				$output = esc_html( __( 'N/A', 'woocommerce-product-recommendations' ) );
+			} else {
+				$link = admin_url( sprintf( 'post.php?post=%d&action=edit', $post_id ) );
+				$output = sprintf( '<a href="%1$s">%2$s</a>', $link, apply_filters( 'the_title', $post->post_title ) );
+			}
+		}
+
+		return $output;
+	}
+
+	/**
+	 * Print footer templates in custom location CPT.
 	 */
 	public static function print_conditions_field_scripts() {
 		global $post;
