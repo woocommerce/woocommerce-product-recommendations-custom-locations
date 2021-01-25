@@ -46,7 +46,7 @@ class WC_Product_Recommendations_Custom_Locations {
 	 *
 	 * @var string
 	 */
-	private $prl_min_version = '1.4.4';
+	private $prl_min_version = '1.4.8';
 
 	/**
 	 * The single instance of the class.
