@@ -58,6 +58,9 @@ class WC_PRL_CL_Admin {
 
 		// Filter Deployments list table location column.
 		add_filter( 'manage_prl_deployments_location_column', array( __CLASS__, 'add_cpt_location_column' ), 10, 3 );
+
+		// Remove all deployments when deleting a custom location.
+		add_action( 'before_delete_post', array( __CLASS__, 'before_delete_location' ), 0 );
 	}
 
 	/**
@@ -77,6 +80,31 @@ class WC_PRL_CL_Admin {
 		}
 
 		return $output;
+	}
+
+	/**
+	 * Delete all deployments when deleting a custom location.
+	 */
+	public static function before_delete_location( $post_id ) {
+
+		// Fetch the post type.
+		$post_type = get_post_type( $post_id );
+		if ( $post_type !== 'prl_hook' ) {
+			return;
+		}
+
+		// Fetch and delete.
+		$args = array(
+			'return' => 'objects',
+			'hook'   => absint( $post_id ),
+		);
+
+		$deployments = WC_PRL()->db->deployment->query( $args );
+		if ( $deployments ) {
+			foreach( $deployments as $deployment ) {
+				$deployment->delete();
+			}
+		}
 	}
 
 	/**
