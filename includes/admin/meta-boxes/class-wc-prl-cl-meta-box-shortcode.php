@@ -59,10 +59,9 @@ class WC_PRL_CL_Meta_Box_Shortcode extends WC_PRL_Meta_Box {
 
 		?>
 		<div id="wc-prl-cl-shortcode">
-			<p><?php esc_html_e( 'This location can only be displayed manually.', 'woocommerce-product-recommendations-custom-locations' ) ?></p>
-			<p><?php esc_html_e( 'Add this location anywhere by using the following shortcode:', 'woocommerce-product-recommendations-custom-locations' ) ?></p>
+			<p><?php esc_html_e( 'To render the recommendations generated in this Custom Location, add the following shortcode to any post or page:', 'woocommerce-product-recommendations-custom-locations' ) ?></p>
 			<code><?php echo sprintf( "[woocommerce_prl_recommendations id='%d']", $post->ID ); ?></code>
-			<span class="meta"><a href="#" class="copy"><?php esc_html_e( 'Copy to clipboard', 'woocommerce-product-recommendations-custom-locations' ) ?></a></span>
+			<span class="meta"><a href="#" class="copy"><?php esc_html_e( 'Copy shortcode', 'woocommerce-product-recommendations-custom-locations' ) ?></a></span>
 		</div>
 		<?php
 	}

@@ -132,8 +132,15 @@ class WC_PRL_CL_Admin {
 		 * Enqueue specific styles & scripts.
 		 */
 		if ( WC_PRL()->is_current_screen() ) {
+
 			wp_enqueue_script( 'wc-prl-cl-writepanel' );
 			wp_enqueue_style( 'wc-prl-cl-admin-css' );
+
+			$params = array(
+				'i18n_copied' => __( 'Shortcode copied.', 'woocommerce-product-recommendations-custom-locations' )
+			);
+
+			wp_localize_script( 'wc-prl-cl-writepanel', 'wc_prl_cl_admin_params', $params );
 		}
 	}
 

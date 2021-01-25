@@ -1,24 +1,22 @@
 <?php
 /**
-* Plugin Name: WooCommerce Product Recommendations - Custom Locations
+* Plugin Name: Product Recommendations - Custom Locations
 * Plugin URI: https://woocommerce.com/products/product-recommendations/
-* Description: Create smarter up-sells and cross-sells, place them anywhere, and measure their impact with in-depth analytics.
+* Description: Use shortcodes and blocks to display product recommendations in custom pages and locations. Free feature plugin for the official WooCommerce Product Recommendations extension.
 * Version: 1.0.0
 * Author: SomewhereWarm
 * Author URI: https://somewherewarm.com/
-*
-* Woo: 4486128:9732a1cdebd38f7eb1f58bb712f7fb0e
 *
 * Text Domain: woocommerce-product-recommendations-custom-locations
 * Domain Path: /languages/
 *
 * Requires at least: 4.4
-* Tested up to: 5.5
+* Tested up to: 5.6
 *
 * WC requires at least: 3.3
-* WC tested up to: 4.6
+* WC tested up to: 4.9
 *
-* Copyright: © 2017-2020 SomewhereWarm SMPC.
+* Copyright: © 2017-2021 SomewhereWarm SMPC.
 * License: GNU General Public License v3.0
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -145,15 +143,9 @@ class WC_Product_Recommendations_Custom_Locations {
 
 		$this->define_constants();
 
-		if ( ! function_exists( 'WC_PRL' ) ) {
-			return;
-		}
-
 		// WC version sanity check.
-		if ( version_compare( WC_PRL()->get_plugin_version(), $this->prl_min_version ) < 0 ) {
-			$notice = sprintf( __( '"Custom Locations" mini-extension requires at least WooCommerce Product Recommendations <strong>%s</strong>.', 'woocommerce-product-recommendations-custom-locations' ), $this->prl_min_version );
-			require_once( WC_PRL_ABSPATH . 'includes/admin/class-wc-prl-admin-notices.php' );
-			WC_PRL_Admin_Notices::add_notice( $notice, 'error' ); // TODO: require without admin notices.
+		if ( ! function_exists( 'WC_PRL' ) || version_compare( WC_PRL()->get_plugin_version(), $this->prl_min_version ) < 0 ) {
+			add_action( 'admin_notices', array( $this, 'dependencies_notice' ) );
 			return false;
 		}
 
@@ -189,9 +181,6 @@ class WC_Product_Recommendations_Custom_Locations {
 	 * Includes.
 	 */
 	public function includes() {
-
-		// Install.
-		// require_once( WC_PRL_CL_ABSPATH . 'includes/class-wc-prl-cl-install.php' );
 
 		// PRL locations management.
 		require_once( WC_PRL_CL_ABSPATH . 'includes/class-wc-prl-cl-locations.php' );
@@ -235,6 +224,14 @@ class WC_Product_Recommendations_Custom_Locations {
 		$screens[] = 'edit-prl_hook';
 
 		return $screens;
+	}
+
+	/**
+	 * PRL dependency check notice.
+	 */
+	public function dependencies_notice() {
+		$notice = sprintf( __( '<strong>Product Recommendations - Custom Locations</strong> requires at least <a href="%1$s" target="_blank">WooCommerce Product Recommendations</a> version <strong>%2$s</strong>.', 'woocommerce-product-recommendations-custom-locations' ), 'https://woocommerce.com/products/product-recommendations', $this->prl_min_version );
+		echo '<div class="error"><p>' . $notice . '</p></div>';
 	}
 }
 

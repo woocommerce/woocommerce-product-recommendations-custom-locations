@@ -59,7 +59,7 @@
 		}
 
 		navigator.clipboard.writeText( text ).then( function() {
-			alert( 'Copied' );
+			alert( wc_prl_cl_admin_params.i18n_copied );
 		}, function( err ) {
 			console.error( 'Async: Could not copy text', err );
 		} );

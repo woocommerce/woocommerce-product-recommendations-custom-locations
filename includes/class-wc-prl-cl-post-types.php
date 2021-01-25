@@ -57,22 +57,22 @@ class WC_PRL_CL_Post_Types {
 					'singular_name'         => __( 'Custom Location', 'woocommerce-product-recommendations-custom-locations' ),
 					'all_items'             => __( 'Locations', 'woocommerce-product-recommendations-custom-locations' ),
 					'menu_name'             => _x( 'Location', 'Admin menu name', 'woocommerce-product-recommendations-custom-locations' ),
-					'add_new'               => __( 'Create new', 'woocommerce-product-recommendations-custom-locations' ),
-					'add_new_item'          => __( 'Create new location', 'woocommerce-product-recommendations-custom-locations' ),
+					'add_new'               => __( 'Add New', 'woocommerce-product-recommendations-custom-locations' ),
+					'add_new_item'          => __( 'Add custom location', 'woocommerce-product-recommendations-custom-locations' ),
 					'edit'                  => __( 'Edit', 'woocommerce-product-recommendations-custom-locations' ),
-					'edit_item'             => __( 'Edit location', 'woocommerce-product-recommendations-custom-locations' ),
-					'new_item'              => __( 'New location', 'woocommerce-product-recommendations-custom-locations' ),
-					'view_item'             => __( 'View location', 'woocommerce-product-recommendations-custom-locations' ),
-					'view_items'            => __( 'View locations', 'woocommerce-product-recommendations-custom-locations' ),
-					'search_items'          => __( 'Search locations', 'woocommerce-product-recommendations-custom-locations' ),
+					'edit_item'             => __( 'Edit Location', 'woocommerce-product-recommendations-custom-locations' ),
+					'new_item'              => __( 'New Location', 'woocommerce-product-recommendations-custom-locations' ),
+					'view_item'             => __( 'View Location', 'woocommerce-product-recommendations-custom-locations' ),
+					'view_items'            => __( 'View Locations', 'woocommerce-product-recommendations-custom-locations' ),
+					'search_items'          => __( 'Search Locations', 'woocommerce-product-recommendations-custom-locations' ),
 					'not_found'             => self::no_locations_boarding(),
-					'not_found_in_trash'    => __( 'No locations found in Trash', 'woocommerce-product-recommendations-custom-locations' ),
-					'parent'                => __( 'Parent location', 'woocommerce-product-recommendations-custom-locations' ),
-					'filter_items_list'     => __( 'Filter locations', 'woocommerce-product-recommendations-custom-locations' ),
+					'not_found_in_trash'    => __( 'No Locations found in Trash', 'woocommerce-product-recommendations-custom-locations' ),
+					'parent'                => __( 'Parent Location', 'woocommerce-product-recommendations-custom-locations' ),
+					'filter_items_list'     => __( 'Filter Locations', 'woocommerce-product-recommendations-custom-locations' ),
 					'items_list_navigation' => __( 'Location navigation', 'woocommerce-product-recommendations-custom-locations' ),
 					'items_list'            => __( 'Locations list', 'woocommerce-product-recommendations-custom-locations' ),
 				),
-				'description'         => __( 'Create Custom Locations to display product recommendations on your store.', 'woocommerce-product-recommendations-custom-locations' ),
+				'description'         => __( 'Create additional Locations for your recommendation Engines and use shortcodes to display them anywhere.', 'woocommerce-product-recommendations-custom-locations' ),
 				'public'              => false,
 				'show_ui'             => true,
 				'capability_type'     => 'product',
@@ -99,14 +99,14 @@ class WC_PRL_CL_Post_Types {
 		ob_start();
 		?><div class="prl-custom-locations-empty-state">
 			<p class="main">
-				<?php esc_html_e( 'Create a Custom Location', 'woocommerce-product-recommendations-custom-locations' ); ?>
+				<?php esc_html_e( 'Create Custom Location', 'woocommerce-product-recommendations-custom-locations' ); ?>
 			</p>
 			<p>
-				<?php esc_html_e( 'Ready to offer custom product recommendations?', 'woocommerce-product-recommendations-custom-locations' ); ?>
+				<?php esc_html_e( 'Need to display product recommendations using shortcodes or blocks?', 'woocommerce-product-recommendations-custom-locations' ); ?>
 				<br/>
-				<?php esc_html_e( 'Start by creating an Custom Location. Then, deploy it using a shortcode.', 'woocommerce-product-recommendations-custom-locations' ); ?>
+				<?php esc_html_e( 'Start by creating a Custom Location, and then use its shortcode anywhere.', 'woocommerce-product-recommendations-custom-locations' ); ?>
 			</p>
-			<a class="button sw-button-primary sw-button-primary--woo" id="sw-button-primary" href="<?php echo admin_url( 'post-new.php?post_type=prl_hook' ); ?>"><?php esc_html_e( 'Create Custom Location', 'woocommerce-product-recommendations-custom-locations' ); ?></a>
+			<a class="button sw-button-primary sw-button-primary--woo" id="sw-button-primary" href="<?php echo admin_url( 'post-new.php?post_type=prl_hook' ); ?>"><?php esc_html_e( 'Add Location', 'woocommerce-product-recommendations-custom-locations' ); ?></a>
 		</div><?php
 		$message = ob_get_clean();
 		return $message;
@@ -150,11 +150,11 @@ class WC_PRL_CL_Post_Types {
 
 		$bulk_messages[ 'prl_hook' ] = array(
 			/* translators: %s: location count */
-			'deleted'   => _n( '%s location permanently deleted.', '%s locations permanently deleted.', $bulk_counts[ 'deleted' ], 'woocommerce-product-recommendations-custom-locations' ),
+			'deleted'   => _n( '%s item permanently deleted.', '%s items permanently deleted.', $bulk_counts[ 'deleted' ], 'woocommerce-product-recommendations-custom-locations' ),
 			/* translators: %s: location count */
-			'trashed'   => _n( '%s location moved to Trash.', '%s locations moved to Trash.', $bulk_counts[ 'trashed' ], 'woocommerce-product-recommendations-custom-locations' ),
+			'trashed'   => _n( '%s item moved to Trash.', '%s items moved to Trash.', $bulk_counts[ 'trashed' ], 'woocommerce-product-recommendations-custom-locations' ),
 			/* translators: %s: location count */
-			'untrashed' => _n( '%s location restored from Trash.', '%s locations restored from Trash.', $bulk_counts[ 'untrashed' ], 'woocommerce-product-recommendations-custom-locations' ),
+			'untrashed' => _n( '%s item restored from Trash.', '%s items restored from Trash.', $bulk_counts[ 'untrashed' ], 'woocommerce-product-recommendations-custom-locations' ),
 		);
 
 		return $bulk_messages;

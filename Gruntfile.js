@@ -99,7 +99,7 @@ module.exports = function( grunt ) {
 					{
 						expand: true,
 						cwd: '<%= dirs.sass %>/admin',
-						src: [ 'admin.scss' ],
+						src: [ 'wc-prl-cl-admin.scss' ],
 						dest: '<%= dirs.css %>/admin',
 						ext: '.css'
 					}
@@ -171,7 +171,7 @@ module.exports = function( grunt ) {
 		// Check textdomain errors.
 		checktextdomain: {
 			options:{
-				text_domain: [ 'woocommerce', 'woocommerce-product-recommendations-custom-locations' ],
+				text_domain: [ 'woocommerce', 'woocommerce-product-recommendations', 'woocommerce-product-recommendations-custom-locations' ],
 				keywords: [
 					'__:1,2d',
 					'_e:1,2d',
