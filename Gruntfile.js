@@ -387,87 +387,6 @@ module.exports = function( grunt ) {
 	} );
 
 	/**
-	 * Function to validate version numbers in the extension's codebase.
-	 */
-	grunt.registerTask( 'validate_version', function( title, isDeployment ) {
-
-		if ( ! isDeployment || isDeployment == 'false' ) {
-			isDeployment = false;
-		}
-
-		// Get json version.
-		var	version = grunt.config.process( '<%= pkg.version %>' );
-
-		grunt.log.ok( 'Parsing version numbers...' );
-
-		// Init files.
-		var main_file      = grunt.file.read( title + '.php', { encoding: 'utf8' } ),
-			readme_file    = grunt.file.read( 'readme.txt', { encoding: 'utf8' } ),
-			changelog_file = grunt.file.read( 'changelog.txt', { encoding: 'utf8' } );
-
-		// Parse version number form the readme file.
-		var main_version_reg        = /private \$version = \'([0-9\.]+[-dev]*)([0-9\.]*)\'\;$/gm,
-			main_version_reg_header = / Version: ([0-9\.]+[-dev]*)$/gm,
-			main_version            = main_version_reg.exec( main_file )[ 1 ],
-			main_version_header     = main_version_reg_header.exec( main_file )[ 1 ];
-
-		// Parse version number form the readme file.
-		var readme_version_reg = /Stable tag: ([0-9\.]+[-dev]*)$/gm,
-			readme_version     = readme_version_reg.exec( readme_file )[ 1 ];
-
-		// Parse version number form the changelog file.
-		var changelog_version_reg = / version ([0-9\.]+[-dev]*)/gm,
-			changelog_version     = changelog_version_reg.exec( changelog_file )[ 1 ];
-
-		grunt.log.writeln( 'Version package.json:', version['yellow'] );
-		grunt.log.writeln( 'Version Readme:', readme_version['yellow'] );
-		grunt.log.writeln( 'Version Main Header:', main_version_header['yellow'] );
-		grunt.log.writeln( 'Version Main:', main_version['yellow'] );
-		grunt.log.writeln( 'Version Changelog:', changelog_version['yellow'] );
-
-		grunt.log.ok( 'Checking version numbers...' );
-
-		var errors = [];
-
-		if ( main_version != main_version_header ) {
-			errors.push( 'Main\'s property version does not match header\'s version.' );
-		}
-
-		if ( isDeployment ) {
-
-			if ( version != main_version ) {
-				errors.push( 'package.json version does not match with main file\'s version.' );
-			}
-
-			if ( version != readme_version ) {
-				errors.push( 'package.json version does not match with readme file\'s version.' );
-			}
-
-			if ( version != changelog_version ) {
-				errors.push( 'package.json version does not match with changelog file\'s version.' );
-			}
-
-		} else {
-
-			grunt.log.ok( 'Prereleasing requires a "-dev" suffix in version numbers...' );
-
-			if ( main_version.indexOf( '-dev' ) == -1 ) {
-				errors.push( 'Main\'s version does not include a "-dev" suffix.' );
-			}
-
-			if ( version != main_version.substring( 0, main_version.length - 4 ) ) { // Info: "-dev" is 4 chars in count.
-				errors.push( 'package.json version does not match with main file\'s suffixed "-dev" version.' );
-			}
-		}
-
-		if ( errors.length > 0 ) {
-			grunt.fail.fatal( '\n• ' + errors.join('\n• ') );
-		}
-
-		grunt.log.writeln( 'Versions checked successfully. Moving on...'['green'].bold );
-	} );
-
-	/**
 	 * Build and Upload a new Release.
 	 *
 	 * @deprecated Replaced by Travis CS Process
@@ -475,13 +394,12 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'deploy', function() {
 
 		var done    = this.async(),
-			title   = grunt.config.process( '<%= pkg.title %>' );
+			title   = grunt.config.process( '<%= pkg.name %>' );
 
 		// Sluggify title.
 		title = title.toLowerCase().replace( /\s+/g, '-' );
 
 		grunt.task.run( [
-			'validate_version:' + title + ':' + true,
 			'exec:npm_install',
 			'build',
 			// 'exec:test',
@@ -499,7 +417,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'prerelease', function() {
 
 		var done    = this.async(),
-			title   = grunt.config.process( '<%= pkg.title %>' ),
+			title   = grunt.config.process( '<%= pkg.name %>' ),
 			version = grunt.config.process( '<%= pkg.version %>' );
 
 		// Sluggify title.
@@ -509,7 +427,6 @@ module.exports = function( grunt ) {
 			zip_name_dev = zip_name + '-dev';
 
 		grunt.task.run( [
-			'validate_version:' + title + ':' + false,
 			'exec:npm_install',
 			'build',
 			'exec:zip:' + zip_name_dev + ':' + title,
