@@ -18,6 +18,8 @@ Feature plugin for the official [Product Recommendations](https://woocommerce.co
 
 Custom Locations is a free feature plugin that brings custom locations and shortcode support to the official [Product Recommendations](https://woocommerce.com/products/product-recommendations/) extension.
 
+Want to contribute? Please submit issue reports and pull requests on [GitHub](https://github.com/somewherewarm/woocommerce-product-recommendations-custom-locations).
+
 **Important**: This plugin is a free add-on for the official [WooCommerce Product Recommendations](https://woocommerce.com/products/product-recommendations/) extension. It has been created to validate and refine a feature that may be rolled into the extension in the future.
 
 
