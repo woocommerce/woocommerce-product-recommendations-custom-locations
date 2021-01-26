@@ -35,8 +35,9 @@ This plugin requires the latest version of the official [WooCommerce Product Rec
 
 == Screenshots ==
 
-1. Creating a new Custom Location.
-2. Adding a Custom Location to a post.
+1. Creating a Custom Location for deploying recommendation Engines.
+2. Adding the shortcode for our Custom Location to the Home page.
+3. The Home page, complete with product recommendations from Engines deployed in our Custom Location.
 
 
 == Changelog ==
