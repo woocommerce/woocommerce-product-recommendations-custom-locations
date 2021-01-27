@@ -5,7 +5,7 @@ Tags: woocommerce, product, recommendations, toolkit, tracking, conversion, up-s
 Requires PHP: 5.6
 Requires at least: 4.4
 Tested up to: 5.6
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 WC requires at least: 3.3
 WC tested up to: 5.0
 License: GNU General Public License v3.0
@@ -41,6 +41,9 @@ This plugin requires the latest version of the official [WooCommerce Product Rec
 
 
 == Changelog ==
+
+= 1.0.1 =
+* Fix - Prevent fatal error when WooCommerce is not active.
 
 = 1.0.0 =
 * Initial Release.
