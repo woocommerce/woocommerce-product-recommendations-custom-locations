@@ -144,7 +144,7 @@ class WC_Product_Recommendations_Custom_Locations {
 		$this->define_constants();
 
 		// WC version sanity check.
-		if ( ! function_exists( 'WC_PRL' ) || version_compare( WC_PRL()->get_plugin_version(), $this->prl_min_version ) < 0 ) {
+		if ( ! function_exists( 'WC' ) || ! function_exists( 'WC_PRL' ) || version_compare( WC_PRL()->get_plugin_version(), $this->prl_min_version ) < 0 ) {
 			add_action( 'admin_notices', array( $this, 'dependencies_notice' ) );
 			return false;
 		}
@@ -230,7 +230,11 @@ class WC_Product_Recommendations_Custom_Locations {
 	 * PRL dependency check notice.
 	 */
 	public function dependencies_notice() {
-		$notice = sprintf( __( '<strong>Product Recommendations - Custom Locations</strong> requires at least <a href="%1$s" target="_blank">WooCommerce Product Recommendations</a> version <strong>%2$s</strong>.', 'woocommerce-product-recommendations-custom-locations' ), 'https://woocommerce.com/products/product-recommendations', $this->prl_min_version );
+		if ( ! function_exists( 'WC' ) ) {
+			$notice = sprintf( __( 'Product Recommendations - Custom Locations requires at least WooCommerce <strong>%s</strong>.', 'woocommerce-product-recommendations-custom-locations' ), '3.3.0' );
+		} else {
+			$notice = sprintf( __( '<strong>Product Recommendations - Custom Locations</strong> requires at least <a href="%1$s" target="_blank">WooCommerce Product Recommendations</a> version <strong>%2$s</strong>.', 'woocommerce-product-recommendations-custom-locations' ), 'https://woocommerce.com/products/product-recommendations', $this->prl_min_version );
+		}
 		echo '<div class="error"><p>' . $notice . '</p></div>';
 	}
 }
