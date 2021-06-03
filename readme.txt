@@ -4,10 +4,10 @@ Contributors: SomewhereWarm
 Tags: woocommerce, product, recommendations, toolkit, tracking, conversion, up-sells, cross-sells
 Requires PHP: 5.6
 Requires at least: 4.4
-Tested up to: 5.6
-Stable tag: 1.0.1
+Tested up to: 5.7
+Stable tag: 1.0.2
 WC requires at least: 3.3
-WC tested up to: 5.0
+WC tested up to: 5.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,10 +43,10 @@ This plugin requires the latest version of the official [WooCommerce Product Rec
 == Changelog ==
 
 = 1.0.2 =
-* Fix - Fix custom locations labels in "Performance" page.
+* Fix - Fix custom location labels in "Performance" page.
 
 = 1.0.1 =
 * Fix - Prevent fatal error when WooCommerce is not active.
 
-= 1.0.0 =
-* Initial Release.
+= 1.0.2 =
+* Fixed custom location labels in "Performance" page.
