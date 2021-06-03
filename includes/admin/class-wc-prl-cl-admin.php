@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Loads admin scripts, includes admin classes and adds admin hooks.
  *
  * @class    WC_PRL_CL_Admin
- * @version  1.0.0
+ * @version  1.0.2
  */
 class WC_PRL_CL_Admin {
 
@@ -59,8 +59,12 @@ class WC_PRL_CL_Admin {
 		// Filter Deployments list table location column.
 		add_filter( 'manage_prl_deployments_location_column', array( __CLASS__, 'add_cpt_location_column' ), 10, 3 );
 
+		// Manage location name in Performance reports.
+		add_filter( 'woocommerce_prl_performance_location_data', array( __CLASS__, 'maybe_add_cpt_performance_location_data' ), 10, 2 );
+
 		// Remove all deployments when deleting a custom location.
-		add_action( 'before_delete_post', array( __CLASS__, 'before_delete_location' ), 0 );
+		add_action( 'before_delete_post', array( __CLASS__, 'before_delete_location' ), 0, 2 );
+		add_action( 'save_post', array( __CLASS__, 'before_save_location' ), 0, 2 );
 	}
 
 	/**
@@ -82,14 +86,53 @@ class WC_PRL_CL_Admin {
 		return $output;
 	}
 
+	public static function maybe_add_cpt_performance_location_data( $location_data, $hash ) {
+		// If not false, then it's a core's location.
+		if ( false !== $location_data ) {
+			return $location_data;
+		}
+
+		// Local runtime cache.
+		static $custom_locations = array();
+		$custom_locations        = get_transient( 'wc_prl_cl_custom_locations_data_map', false );
+		if ( empty( $custom_locations ) ) {
+
+			$cpts = get_posts( array(
+				'post_type' => 'prl_hook',
+				'fields'    => 'ids'
+			) );
+
+			if ( ! empty( $cpts ) ) {
+				foreach ( $cpts as $custom_location_id ) {
+					$key   = substr( md5( $custom_location_id ), 0, 7 );
+					$title = get_the_title( $custom_location_id );
+					$custom_locations[ $key ] = array(
+						'title' => $title ? $title : _x( '(no title)', 'performance_label', 'woocommerce-product-recommendations-custom-locations' ),
+						'hook'  => 0,
+						'id'    => 'custom',
+						'label' => _x( 'Custom', 'performance_label', 'woocommerce-product-recommendations-custom-locations' ),
+						'link'  => null
+					);
+				}
+			}
+
+			set_transient( 'wc_prl_cl_custom_locations_data_map', $custom_locations );
+		}
+
+		$found_data = false;
+		if ( isset( $custom_locations[ $hash ] ) ) {
+			$found_data = $custom_locations[ $hash ];
+		}
+
+		return $found_data;
+	}
+
 	/**
 	 * Delete all deployments when deleting a custom location.
 	 */
-	public static function before_delete_location( $post_id ) {
+	public static function before_delete_location( $post_id, $post ) {
 
-		// Fetch the post type.
-		$post_type = get_post_type( $post_id );
-		if ( $post_type !== 'prl_hook' ) {
+		if ( $post->post_type !== 'prl_hook' ) {
 			return;
 		}
 
@@ -105,6 +148,20 @@ class WC_PRL_CL_Admin {
 				$deployment->delete();
 			}
 		}
+
+		set_transient( 'wc_prl_cl_custom_locations_data_map', array() );
+	}
+
+	/**
+	 * Handle saving a custom location.
+	 */
+	public static function before_save_location( $post_id, $post ) {
+
+		if ( $post->post_type !== 'prl_hook' ) {
+			return;
+		}
+
+		set_transient( 'wc_prl_cl_custom_locations_data_map', array() );
 	}
 
 	/**
@@ -115,9 +172,10 @@ class WC_PRL_CL_Admin {
 		if ( ! $post || ! is_a( $post, 'WP_Post' ) ) {
 			return;
 		}
-		// if ( 'prl_hook' !== $post->post_type ) {
-		// 	return;
-		// }
+
+		if ( 'prl_hook' !== $post->post_type ) {
+			return;
+		}
 
 		WC_PRL()->conditions->print_js_templates();
 	}

@@ -1,7 +1,7 @@
 {
 	"name": "product-recommendations-custom-locations",
 	"title": "Product Recommendations - Custom Locations",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"homepage": "https://woocommerce.com/products/product-recommendations/",
 	"repository": {
 		"type": "git",

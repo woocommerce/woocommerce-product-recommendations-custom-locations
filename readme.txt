@@ -42,6 +42,9 @@ This plugin requires the latest version of the official [WooCommerce Product Rec
 
 == Changelog ==
 
+= 1.0.2 =
+* Fix - Fix custom locations labels in "Performance" page.
+
 = 1.0.1 =
 * Fix - Prevent fatal error when WooCommerce is not active.
 
