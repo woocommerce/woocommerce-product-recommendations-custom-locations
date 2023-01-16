@@ -22,6 +22,8 @@ Want to contribute? Please submit issue reports and pull requests on [GitHub](ht
 
 **Important**: This plugin is a free add-on for the official [WooCommerce Product Recommendations](https://woocommerce.com/products/product-recommendations/) extension. It has been created to validate and refine a feature that may be rolled into the extension in the future.
 
+**Important**: The code in this plugin is provided “as is”. Support via the WordPress.org forum is provided on a **voluntary** basis only. If you have an active subscription for Product Recommendations, please be aware that WooCommerce Support may not be able to assist you with this experimental plugin.
+
 
 == Documentation ==
 
