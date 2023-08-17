@@ -3,7 +3,7 @@
 * Plugin Name: Product Recommendations - Custom Locations
 * Plugin URI: https://woocommerce.com/products/product-recommendations/
 * Description: Use shortcodes and blocks to display product recommendations in custom pages and locations. Free feature plugin for the official WooCommerce Product Recommendations extension.
-* Version: 1.0.2
+* Version: 1.0.3
 * Author: SomewhereWarm
 * Author URI: https://somewherewarm.com/
 *
@@ -11,10 +11,10 @@
 * Domain Path: /languages/
 *
 * Requires at least: 4.4
-* Tested up to: 5.7
+* Tested up to: 6.3
 *
 * WC requires at least: 3.3
-* WC tested up to: 5.3
+* WC tested up to: 8.0
 *
 * Copyright: © 2017-2021 SomewhereWarm SMPC.
 * License: GNU General Public License v3.0
@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Main plugin class.
  *
  * @class    WC_Product_Recommendations_Custom_Locations
- * @version  1.0.2
+ * @version  1.0.3
  */
 class WC_Product_Recommendations_Custom_Locations {
 
@@ -39,7 +39,7 @@ class WC_Product_Recommendations_Custom_Locations {
 	 *
 	 * @var string
 	 */
-	private $version = '1.0.2';
+	private $version = '1.0.3';
 
 	/**
 	 * Min required PRL version.
@@ -149,6 +149,9 @@ class WC_Product_Recommendations_Custom_Locations {
 			return false;
 		}
 
+		// Declare HPOS compatibility.
+		add_action( 'before_woocommerce_init', array( $this, 'declare_hpos_compatibility' ) );
+
 		$this->includes();
 
 		// Add main location object (Shortcode).
@@ -164,6 +167,19 @@ class WC_Product_Recommendations_Custom_Locations {
 	public function define_constants() {
 			$this->maybe_define_constant( 'WC_PRL_CL_VERSION', $this->version );
 			$this->maybe_define_constant( 'WC_PRL_CL_ABSPATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
+	}
+
+	/**
+	 * Declare HPOS( Custom Order tables) compatibility.
+	 *
+	 */
+	public function declare_hpos_compatibility() {
+
+		if ( ! class_exists( 'Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			return;
+		}
+
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', plugin_basename( __FILE__ ), true );
 	}
 
 	/**
