@@ -2,12 +2,12 @@
 
 Contributors: SomewhereWarm
 Tags: woocommerce, product, recommendations, toolkit, tracking, conversion, up-sells, cross-sells
-Requires PHP: 5.6
-Requires at least: 4.4
-Tested up to: 6.3
-Stable tag: 1.0.3
-WC requires at least: 3.3
-WC tested up to: 8.0
+Requires PHP: 7.4
+Requires at least: 6.2
+Tested up to: 6.6
+Stable tag: 2.0.0
+WC requires at least: 8.2
+WC tested up to: 9.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,12 @@ This plugin requires the latest version of the official [WooCommerce Product Rec
 
 
 == Changelog ==
+
+= 2.0.0 =
+* Important - New: PHP 7.4+ is now required.
+* Important - New: WooCommerce 8.2+ is now required.
+* Important - New: WordPress 6.2+ is now required.
+* Important - New: Product Recommendations 4.0+ is now required.
 
 = 1.0.3 =
 * Feature - Declared compatibility with the new High-Performance order tables.
