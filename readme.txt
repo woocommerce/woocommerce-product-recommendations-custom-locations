@@ -1,7 +1,7 @@
 === Product Recommendations - Custom Locations ===
 
 Contributors: SomewhereWarm
-Tags: woocommerce, product, recommendations, toolkit, tracking, conversion, up-sells, cross-sells
+Tags: woocommerce, recommendations, conversion, up-sells, cross-sells
 Requires PHP: 7.4
 Requires at least: 6.2
 Tested up to: 6.6
