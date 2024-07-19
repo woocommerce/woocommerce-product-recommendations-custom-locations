@@ -1,6 +1,6 @@
 === Product Recommendations - Custom Locations ===
 
-Contributors: SomewhereWarm
+Contributors: automattic, woocommerce, SomewhereWarm
 Tags: woocommerce, recommendations, conversion, up-sells, cross-sells
 Requires PHP: 7.4
 Requires at least: 6.2
