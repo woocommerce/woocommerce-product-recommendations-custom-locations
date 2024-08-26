@@ -8,7 +8,7 @@ module.exports = function( grunt ) {
 	'use strict';
 
 	var request = require( 'request' ),
-		sass    = require( 'node-sass' );
+		sass    = require( 'sass' );
 
 	/**
 	 * Init config.
