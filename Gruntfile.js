@@ -112,7 +112,7 @@ module.exports = function( grunt ) {
 			options: {
 				processors: [
 					require( 'autoprefixer' )( {
-						browsers: [
+						overrideBrowserslist: [
 							'> 0.1%',
 							'ie 8',
 							'ie 9'
