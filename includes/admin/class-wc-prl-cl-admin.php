@@ -23,13 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WC_PRL_CL_Admin {
 
 	/**
-	 * Bundled selectSW library version.
-	 *
-	 * @var string
-	 */
-	private static $bundled_selectsw_version = '1.1.3';
-
-	/**
 	 * Setup Admin class.
 	 */
 	public static function init() {
