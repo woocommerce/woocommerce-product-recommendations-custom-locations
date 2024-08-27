@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Loads admin scripts, includes admin classes and adds admin hooks.
  *
  * @class    WC_PRL_CL_Admin
- * @version  1.0.2
+ * @version  x.x.x
  */
 class WC_PRL_CL_Admin {
 
