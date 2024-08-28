@@ -18,16 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Loads admin scripts, includes admin classes and adds admin hooks.
  *
  * @class    WC_PRL_CL_Admin
- * @version  1.0.2
+ * @version  x.x.x
  */
 class WC_PRL_CL_Admin {
-
-	/**
-	 * Bundled selectSW library version.
-	 *
-	 * @var string
-	 */
-	private static $bundled_selectsw_version = '1.1.3';
 
 	/**
 	 * Setup Admin class.

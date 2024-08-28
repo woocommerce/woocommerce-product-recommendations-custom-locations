@@ -8,7 +8,7 @@ module.exports = function( grunt ) {
 	'use strict';
 
 	var request = require( 'request' ),
-		sass    = require( 'node-sass' );
+		sass    = require( 'sass' );
 
 	/**
 	 * Init config.
@@ -112,7 +112,7 @@ module.exports = function( grunt ) {
 			options: {
 				processors: [
 					require( 'autoprefixer' )( {
-						browsers: [
+						overrideBrowserslist: [
 							'> 0.1%',
 							'ie 8',
 							'ie 9'
@@ -292,6 +292,7 @@ module.exports = function( grunt ) {
 						'-x "*/codeception.yml"',
 						'-x "*/.DS_Store"',
 						'-x "*/.gitignore"',
+						'-x "*/.nvmrc"',
 						'-x "*/.travis.yml"',
 						'-x "*/._*"'
 					];

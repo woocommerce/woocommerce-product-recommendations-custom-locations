@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Main plugin class.
  *
  * @class    WC_Product_Recommendations_Custom_Locations
- * @version  2.0.0
+ * @version  x.x.x
  */
 class WC_Product_Recommendations_Custom_Locations {
 
@@ -39,7 +39,7 @@ class WC_Product_Recommendations_Custom_Locations {
 	 *
 	 * @var string
 	 */
-	private $version = '2.0.0';
+	private $version = 'x.x.x';
 
 	/**
 	 * Min required PRL version.
