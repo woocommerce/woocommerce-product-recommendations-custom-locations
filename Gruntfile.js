@@ -292,6 +292,7 @@ module.exports = function( grunt ) {
 						'-x "*/codeception.yml"',
 						'-x "*/.DS_Store"',
 						'-x "*/.gitignore"',
+						'-x "*/.nvmrc"',
 						'-x "*/.travis.yml"',
 						'-x "*/._*"'
 					];
