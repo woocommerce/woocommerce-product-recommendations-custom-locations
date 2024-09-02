@@ -44,7 +44,7 @@ This plugin requires the latest version of the official [WooCommerce Product Rec
 
 == Changelog ==
 
-= x.x.x =
+= 2.0.1 =
 * Fix - Include built CSS and JS files.
 
 = 2.0.0 =
