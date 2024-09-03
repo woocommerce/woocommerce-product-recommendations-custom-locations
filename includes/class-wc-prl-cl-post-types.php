@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registers custom post types and taxonomies.
  *
  * @class    WC_PRL_CL_Post_Types
- * @version  1.0.0
+ * @version  x.x.x
  */
 class WC_PRL_CL_Post_Types {
 
