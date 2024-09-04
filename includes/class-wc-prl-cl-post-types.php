@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registers custom post types and taxonomies.
  *
  * @class    WC_PRL_CL_Post_Types
- * @version  1.0.0
+ * @version  x.x.x
  */
 class WC_PRL_CL_Post_Types {
 
@@ -106,7 +106,7 @@ class WC_PRL_CL_Post_Types {
 				<br/>
 				<?php esc_html_e( 'Start by creating a Custom Location, and then use its shortcode anywhere.', 'woocommerce-product-recommendations-custom-locations' ); ?>
 			</p>
-			<a class="button sw-button-primary sw-button-primary--woo" id="sw-button-primary" href="<?php echo admin_url( 'post-new.php?post_type=prl_hook' ); ?>"><?php esc_html_e( 'Add Location', 'woocommerce-product-recommendations-custom-locations' ); ?></a>
+			<a class="components-button is-primary" id="sw-button-primary" href="<?php echo admin_url( 'post-new.php?post_type=prl_hook' ); ?>"><?php esc_html_e( 'Add Location', 'woocommerce-product-recommendations-custom-locations' ); ?></a>
 		</div><?php
 		$message = ob_get_clean();
 		return $message;
