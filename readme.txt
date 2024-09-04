@@ -44,7 +44,7 @@ This plugin requires the latest version of the official [WooCommerce Product Rec
 
 == Changelog ==
 
-= x.x.x =
+= 2.0.2 =
 * Tweak - Updating styling of empty state.
 
 = 2.0.1 =
