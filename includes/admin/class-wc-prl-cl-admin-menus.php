@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Setup PRL menus in WP admin.
  *
- * @version 1.0.1
+ * @version x.x.x
  */
 class WC_PRL_CL_Admin_Menus {
 
