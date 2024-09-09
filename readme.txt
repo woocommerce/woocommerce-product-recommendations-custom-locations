@@ -44,6 +44,9 @@ This plugin requires the latest version of the official [WooCommerce Product Rec
 
 == Changelog ==
 
+= x.x.x =
+* Tweak - Removed navigation integration (deprecated WooCommerce feature).
+
 = 2.0.2 =
 * Tweak - Updating styling of empty state.
 

@@ -11,13 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Automattic\WooCommerce\Admin\Features\Navigation\Menu;
-use Automattic\WooCommerce\Admin\Features\Navigation\Screen;
-
 /**
  * Setup PRL menus in WP admin.
  *
- * @version 1.0.1
+ * @version x.x.x
  */
 class WC_PRL_CL_Admin_Menus {
 
@@ -39,9 +36,6 @@ class WC_PRL_CL_Admin_Menus {
 
 		// Integrate WooCommerce breadcrumb bar.
 		add_action( 'admin_menu', array( __CLASS__, 'wc_admin_connect_gc_pages' ) );
-
-		// Integrate WooCommerce side navigation.
-		add_action( 'admin_menu', array( __CLASS__, 'register_navigation_pages' ) );
 	}
 
 	/**
@@ -117,43 +111,6 @@ class WC_PRL_CL_Admin_Menus {
 		}
 
 		return $current_tab;
-	}
-
-	/**
-	 * Register WooCommerce menu pages.
-	 *
-	 * @since  1.0.1
-	 *
-	 * @return void
-	 */
-	public static function register_navigation_pages() {
-
-		if ( ! class_exists( '\Automattic\WooCommerce\Admin\Features\Navigation\Menu' ) || ! class_exists( '\Automattic\WooCommerce\Admin\Features\Navigation\Screen' ) ) {
-			return;
-		}
-
-		$match_expression = isset( $_GET[ 'post' ] ) && get_post_type( intval( $_GET[ 'post' ] ) ) === 'prl_hook'
-			? '(edit.php|post.php)'
-			: null;
-		if ( is_null( $match_expression ) ) {
-			$match_expression = isset( $_GET[ 'post_type' ] ) && $_GET[ 'post_type' ] === 'prl_hook'
-			? '(post-new.php)'
-			: null;
-		}
-
-		Menu::add_plugin_item(
-			array(
-				'id'              => 'prl-custom-locations',
-				'title'           => __( 'Custom Locations', 'woocommerce-product-recommendations' ),
-				'capability'      => 'manage_woocommerce',
-				'url'             => 'edit.php?post_type=prl_hook',
-				'parent'          => 'prl-recommendations-category',
-				'matchExpression' => $match_expression,
-				'order'           => 40
-			)
-		);
-
-		Screen::register_post_type( 'prl_hook' );
 	}
 }
 
