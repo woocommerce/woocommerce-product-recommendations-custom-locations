@@ -5,7 +5,7 @@ Tags: woocommerce, recommendations, conversion, up-sells, cross-sells
 Requires PHP: 7.4
 Requires at least: 6.2
 Tested up to: 6.6
-Stable tag: 2.0.1
+Stable tag: 2.0.3
 WC requires at least: 8.2
 WC tested up to: 9.1
 License: GNU General Public License v3.0
@@ -44,7 +44,7 @@ This plugin requires the latest version of the official [WooCommerce Product Rec
 
 == Changelog ==
 
-= x.x.x =
+= 2.0.3 =
 * Tweak - Removed navigation integration (deprecated WooCommerce feature).
 
 = 2.0.2 =
