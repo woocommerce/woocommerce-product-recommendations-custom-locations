@@ -1,11 +1,11 @@
 {
 	"name": "product-recommendations-custom-locations",
 	"title": "Product Recommendations - Custom Locations",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"homepage": "https://woocommerce.com/products/product-recommendations/",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/somewherewarm/woocommerce-product-recommendations.git"
+		"url": "https://github.com/woocommerce/woocommerce-product-recommendations.git"
 	},
 	"license": "GPL-3.0+",
 	"main": "Gruntfile.js",

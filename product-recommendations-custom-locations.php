@@ -3,9 +3,9 @@
 * Plugin Name: Product Recommendations - Custom Locations
 * Plugin URI: https://woocommerce.com/products/product-recommendations/
 * Description: Use shortcodes and blocks to display product recommendations in custom pages and locations. Free feature plugin for the official WooCommerce Product Recommendations extension.
-* Version: 2.0.3
-* Author: SomewhereWarm
-* Author URI: https://somewherewarm.com/
+* Version: 2.0.4
+* Author: WooCommerce
+* Author URI: https://woocommerce.com/
 *
 * Text Domain: woocommerce-product-recommendations-custom-locations
 * Domain Path: /languages/
@@ -16,7 +16,7 @@
 * WC requires at least: 8.2
 * WC tested up to: 9.1
 *
-* Copyright: © 2017-2024 SomewhereWarm SMPC.
+* Copyright: © 2017-2024 WooCommerce.
 * License: GNU General Public License v3.0
 * License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Main plugin class.
  *
  * @class    WC_Product_Recommendations_Custom_Locations
- * @version  2.0.3
+ * @version  2.0.4
  */
 class WC_Product_Recommendations_Custom_Locations {
 
@@ -39,7 +39,7 @@ class WC_Product_Recommendations_Custom_Locations {
 	 *
 	 * @var string
 	 */
-	private $version = '2.0.3';
+	private $version = '2.0.4';
 
 	/**
 	 * Min required PRL version.

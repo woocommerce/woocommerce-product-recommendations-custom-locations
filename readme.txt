@@ -5,7 +5,7 @@ Tags: woocommerce, recommendations, conversion, up-sells, cross-sells
 Requires PHP: 7.4
 Requires at least: 6.2
 Tested up to: 6.6
-Stable tag: 2.0.3
+Stable tag: 2.0.4
 WC requires at least: 8.2
 WC tested up to: 9.1
 License: GNU General Public License v3.0
@@ -18,7 +18,7 @@ Feature plugin for the official [Product Recommendations](https://woocommerce.co
 
 Custom Locations is a free feature plugin that brings custom locations and shortcode support to the official [Product Recommendations](https://woocommerce.com/products/product-recommendations/) extension.
 
-Want to contribute? Please submit issue reports and pull requests on [GitHub](https://github.com/somewherewarm/woocommerce-product-recommendations-custom-locations).
+Want to contribute? Please submit issue reports and pull requests on [GitHub](https://github.com/woocommerce/woocommerce-product-recommendations-custom-locations).
 
 **Important**: This plugin is a free add-on for the official [WooCommerce Product Recommendations](https://woocommerce.com/products/product-recommendations/) extension. It has been created to validate and refine a feature that may be rolled into the extension in the future.
 
@@ -43,6 +43,9 @@ This plugin requires the latest version of the official [WooCommerce Product Rec
 
 
 == Changelog ==
+
+= 2.0.4 =
+* Tweak - Updated author links.
 
 = 2.0.3 =
 * Tweak - Removed navigation integration (deprecated WooCommerce feature).

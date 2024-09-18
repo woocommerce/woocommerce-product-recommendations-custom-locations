@@ -2,7 +2,7 @@
 /**
  * WC_PRL_CL_Admin_List_Table_Locations class
  *
- * @author   SomewhereWarm <info@somewherewarm.com>
+ * @author   WooCommerce
  * @package  WooCommerce Product Recommendations - Custom Locations
  * @since    1.0.0
  */
